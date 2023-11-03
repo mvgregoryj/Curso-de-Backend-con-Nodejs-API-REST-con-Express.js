@@ -25,7 +25,7 @@ const whitelist = ['http://localhost:5500', 'https://myapp.co'];
 // Definir las opciones del middleware cors, que verifica si el origen de la petición está en la lista blanca
 const options = {
   origin: (origin, callback) => {
-    if (whitelist.includes(origin)) {
+    if (whitelist.includes(origin) || !origin) {
       // Si el origen está en la lista blanca, se llama al callback con el primer argumento nulo y el segundo verdadero
       callback(null, true);
     } else {
