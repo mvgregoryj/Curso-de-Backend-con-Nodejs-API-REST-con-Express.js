@@ -14,7 +14,7 @@ const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/err
 const app = express();
 
 // Definir el puerto donde se ejecutará la aplicación
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Usar el middleware express.json para parsear el cuerpo de las peticiones en formato JSON
 app.use(express.json());
@@ -39,12 +39,12 @@ const options = {
 app.use(cors(options));
 
 // Definir una ruta GET para la raíz de la aplicación, que envía un mensaje de "Hello World!"
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hello World!');
 })
 
 // Definir una ruta GET para /nueva-ruta, que envía un mensaje de "Hola, soy una nueva ruta!"
-app.get('/nueva-ruta', (req, res) => {
+app.get('/api/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta!');
 });
 
